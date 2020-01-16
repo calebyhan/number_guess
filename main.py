@@ -15,7 +15,7 @@ while n:
     i = True
     max_guess = int(input("Do you want to set a maximum amount of tries? Enter 0 if you don't want a maximum amount of guesses. "))
     if max_guess == 0:
-        max_guess = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+        max_guess = 1000000
     else:
         max_guess -= 1
     while i:
