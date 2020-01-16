@@ -13,20 +13,17 @@ while n:
     secret_number = random.randint(0, num)
     print(secret_number)
     i = True
-    max_guess = int(input("Do you want to set a maximum amount of tries? Enter 0 if you don't want a maximum amount of guesses. "))
-    if max_guess == 0:
-        max_guess = 1000000
-    else:
-        max_guess -= 1
+    max_guess = int(input("Enter the maximum number of tries. "))
+    max_guess -= 1
     while i:
-        comparison = int(input("Guess an integer from 1 to %d! (If you are continuing, it is the same number. If you won previously, it is a different number.)  " % num))
+        guess = int(input("Guess an integer from 1 to %d! (If you are continuing, it is the same number. If you won previously, it is a different number.)  " % num))
         #secret_number = random.randint(0, num)
         if max_guess == count:
             print("That was incorrect. ")
-            print("Game over. You have reached the maximum amount of tries. ")
+            print("Game over. You have reached the maximum number of tries, %d" % count)
             i = False
             n = False
-        elif comparison == secret_number:
+        elif guess == secret_number:
             count += 1
             print("You got it!")
             print("It took you", count, "tries!")
@@ -40,20 +37,27 @@ while n:
                 n = False
 
         else:
+            difference = abs(secret_number - guess)
             count += 1
-            # if comparison > secret_number:
+            # if guess > secret_number:
             #     print("You guessed too high.")
-            if (comparison * 1.5) > secret_number:
+            print(difference)
+            print(num / 10)
+            if (guess > secret_number) and (difference >= (num / 2)):
                 print("You guessed too high.")
-            elif ((comparison * 1.25) > secret_number) and ((comparison * 1.5) < secret_number):
+            # elif (guess > secret_number) and ((difference <= (num * 0.25)) and (difference >= (num * 0.1))):
+            #     print("You guessed high.")
+            elif (guess > secret_number) and (difference <= (num / 10)):
+                print("You guessed a little high.")
+            elif (guess > secret_number):
                 print("You guessed high.")
-            elif ((comparison * 1.10) > secret_number) and ((comparison * 1.25) < secret_number):
-                print("You guessed a little too high.")
-            elif ((comparison * 0.10) < secret_number) and ((comparison * 0.25) > secret_number):
-                print("You guessed a little too low.")
-            elif ((comparison * 0.25) < secret_number) and ((comparison * 0.5) < secret_number):
-                print("You guessed low.")
-            elif (comparison * 0.5) < secret_number:
+            elif (guess < secret_number) and (difference <= (num / 10)):
+                print("You guessed a little low.")
+            # elif (guess < secret_number):
+            #     print("You guessed low.")
+            elif (guess < secret_number) and (difference >= (num / 2)):
                 print("You guessed too low.")
+            elif (guess < secret_number):
+                print("You guessed low.")
             # else:
             #     print("You guessed too low.")
