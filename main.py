@@ -19,24 +19,28 @@ while n:
         if difficulty_choose == "E":
             max_guess = 10
             max_guess -= 1
+            print("You will start with 10 tries.")
         elif difficulty_choose == "I":
             max_guess = 7
             max_guess -= 1
+            print("You will start with 7 tries.")
         elif difficulty_choose == "H":
             max_guess = 4
             max_guess -= 1
+            print("You will start with 4 tries.")
     elif difficulty == "n":
-        max_guess = int(input("Enter the maximum number of tries. Enter 0 if ypu don't want a maximum number of tries. "))
+        max_guess = int(input("Enter the maximum number of tries. Enter 0 if you don't want a maximum number of tries. "))
         if max_guess == "0":
             max_guess = 100000
         else:
             max_guess -= 1
     while i:
+        print("You have %d tries left." % int(max_guess + 1 - count))
         guess = int(input("Guess an integer from 1 to %d! (If you are continuing, it is the same number. If you won previously, it is a different number.)  " % num))
         #secret_number = random.randint(0, num)
         if max_guess == count:
             print("That was incorrect. ")
-            print("Game over. You have reached the maximum number of tries.")
+            print("Game over. You have reached the maximum number of tries, %d " % int(count + 1))
             i = False
             n = False
         elif guess == secret_number:
